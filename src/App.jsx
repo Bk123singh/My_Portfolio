@@ -1,10 +1,10 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import MetricsBar from './components/MetricsBar';
 import Experience from './components/Experience';
-import AiShowcase from './components/AiShowcase';
+import Projects from './components/Projects';
 import Skills from './components/Skills';
-import ProductWorkflow from './components/ProductWorkflow';
 import HowIWork from './components/HowIWork';
 import EducationCertifications from './components/EducationCertifications';
 import Contact from './components/Contact';
@@ -12,14 +12,14 @@ import Footer from './components/Footer';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#080c14] text-slate-100 selection:bg-blue-600/30 selection:text-blue-200">
+    <div className="min-h-screen bg-[#fafaf8] text-[#141517] selection:bg-[#111215] selection:text-white">
       <Navbar />
       <main>
         <Hero />
+        <MetricsBar />
         <Experience />
-        <AiShowcase />
+        <Projects />
         <Skills />
-        <ProductWorkflow />
         <HowIWork />
         <EducationCertifications />
         <Contact />

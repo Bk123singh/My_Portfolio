@@ -1,6 +1,7 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { softSkills } from '../data/portfolioData';
-import { Compass, Cpu, Target, Users, BookOpen, CheckCircle } from 'lucide-react';
+import { Compass, Cpu, Target, Users, BookOpen, Check } from 'lucide-react';
 
 const iconMap = {
   Compass,
@@ -12,52 +13,55 @@ const iconMap = {
 
 export default function HowIWork() {
   return (
-    <section id="how-i-work" className="py-20 border-b border-slate-800/60 relative">
+    <section id="how-i-work" className="py-20 md:py-28 border-b border-[#e8e8e3] bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-950/60 border border-blue-500/30 text-blue-400 text-xs font-mono mb-3">
-            <Compass className="w-3.5 h-3.5" />
-            <span>Professional Capabilities</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Beyond the Code: How I Work
+        {/* Section Index & Header */}
+        <div className="mb-14">
+          <span className="text-xs font-mono font-semibold uppercase tracking-widest text-charcoal-400 mb-2 block">
+            [ 04 / OPERATING PRINCIPLES ]
+          </span>
+          <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-[#111215]">
+            Beyond the Code
           </h2>
-          <p className="mt-2 text-slate-400 text-sm max-w-2xl">
-            Software engineering is more than syntax. These are the operating principles and collaborative habits that define how I contribute to engineering teams and product delivery.
+          <p className="mt-2 text-charcoal-600 text-sm sm:text-base max-w-xl">
+            Software engineering is an ongoing balance of technical rigor, trade-off evaluation, and team ownership.
           </p>
         </div>
 
-        {/* Capabilities Grid */}
+        {/* Operating Principles Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {softSkills.map((skill, index) => {
             const IconComponent = iconMap[skill.icon] || Compass;
             return (
-              <div
+              <motion.div
                 key={index}
-                className="rounded-2xl bg-slate-900/50 border border-slate-800 p-6 flex flex-col justify-between hover:border-slate-700 transition-all group"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
+                className="card-clean p-7 flex flex-col justify-between bg-[#fafaf8]"
               >
                 <div>
-                  <div className="flex items-center gap-3 mb-4 pb-3 border-b border-slate-800">
-                    <div className="w-9 h-9 rounded-xl bg-blue-950/80 border border-blue-800/40 flex items-center justify-center text-blue-400 group-hover:text-blue-300 transition-colors">
-                      <IconComponent className="w-4 h-4" />
+                  <div className="flex items-center gap-3 pb-4 mb-4 border-b border-[#e8e8e3]">
+                    <div className="w-8 h-8 rounded-full bg-white border border-[#e8e8e3] text-charcoal-800 flex items-center justify-center">
+                      <IconComponent className="w-4 h-4 text-blue-700" />
                     </div>
-                    <h3 className="font-bold text-slate-100 text-base">
+                    <h3 className="font-display font-bold text-[#111215] text-base">
                       {skill.title}
                     </h3>
                   </div>
 
                   <ul className="space-y-3">
                     {skill.principles.map((principle, pIdx) => (
-                      <li key={pIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300 leading-relaxed">
-                        <CheckCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-1" />
+                      <li key={pIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-charcoal-700 leading-relaxed font-normal">
+                        <Check className="w-3.5 h-3.5 text-blue-600 shrink-0 mt-1" />
                         <span>{principle}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>

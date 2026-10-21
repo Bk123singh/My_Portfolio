@@ -1,111 +1,122 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { educationAndAchievements } from '../data/portfolioData';
-import { GraduationCap, Award, BookOpen, ExternalLink, Code, CheckCircle } from 'lucide-react';
+import { GraduationCap, Award, BookOpen, ArrowUpRight, Code2, CheckCircle2 } from 'lucide-react';
+import { LeetCodeIcon } from './Icons';
 
 export default function EducationCertifications() {
   const { education, achievements, certifications } = educationAndAchievements;
 
   return (
-    <section id="education" className="py-20 border-b border-slate-800/60 relative">
+    <section id="education" className="py-20 md:py-28 border-b border-[#e8e8e3] bg-[#fafaf8]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-950/60 border border-indigo-500/30 text-indigo-400 text-xs font-mono mb-3">
-            <GraduationCap className="w-3.5 h-3.5" />
-            <span>Academic & Foundational Knowledge</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Education, Problem Solving & Certifications
+        {/* Section Index & Header */}
+        <div className="mb-14">
+          <span className="text-xs font-mono font-semibold uppercase tracking-widest text-charcoal-400 mb-2 block">
+            [ 05 / EDUCATION & ACHIEVEMENTS ]
+          </span>
+          <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-[#111215]">
+            Foundations & Problem Solving
           </h2>
-          <p className="mt-2 text-slate-400 text-sm max-w-2xl">
-            Computer science foundation, algorithmic problem-solving fluency, and verified professional coursework.
+          <p className="mt-2 text-charcoal-600 text-sm sm:text-base max-w-xl">
+            Core computer science principles, algorithmic fluency in Python, and professional certifications.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* Left Column: Formal Education */}
-          <div className="lg:col-span-6 rounded-2xl bg-slate-900/50 border border-slate-800 p-6 sm:p-8 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between pb-4 border-b border-slate-800">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-blue-950/80 border border-blue-800/40 flex items-center justify-center text-blue-400">
-                    <GraduationCap className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-white text-lg">
-                      {education.institution}
-                    </h3>
-                    <p className="text-xs text-blue-400 font-mono">
-                      {education.period}
-                    </p>
-                  </div>
+          {/* Left Column: Formal Degree */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-6 card-clean p-8 bg-white"
+          >
+            <div className="flex items-center justify-between pb-6 border-b border-[#e8e8e3]">
+              <div className="flex items-center gap-3.5">
+                <div className="w-10 h-10 rounded-full bg-[#f4f4f0] text-charcoal-800 flex items-center justify-center">
+                  <GraduationCap className="w-5 h-5 text-blue-700" />
                 </div>
-
-                <div className="px-3 py-1 rounded-lg bg-emerald-950/80 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-bold">
-                  CGPA: {education.cgpa}
+                <div>
+                  <h3 className="font-display font-bold text-lg text-[#111215]">
+                    {education.institution}
+                  </h3>
+                  <p className="text-xs text-charcoal-500 font-mono mt-0.5">
+                    {education.period}
+                  </p>
                 </div>
               </div>
 
-              <div className="py-4">
-                <h4 className="text-base font-semibold text-slate-200">
-                  {education.degree}
-                </h4>
-                <p className="text-xs text-slate-400 mt-1">
-                  Rigorous academic curriculum emphasizing low-level system concepts, databases, algorithm optimization, and distributed systems.
-                </p>
-              </div>
-
-              <div className="pt-2">
-                <h5 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-1.5">
-                  <BookOpen className="w-3.5 h-3.5 text-blue-400" />
-                  <span>Relevant Coursework</span>
-                </h5>
-                <div className="flex flex-wrap gap-2">
-                  {education.coursework.map((course, idx) => (
-                    <span
-                      key={idx}
-                      className="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-950/80 text-slate-300 border border-slate-800"
-                    >
-                      {course}
-                    </span>
-                  ))}
-                </div>
+              <div className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-mono font-bold">
+                CGPA: {education.cgpa}
               </div>
             </div>
 
-            <div className="mt-6 pt-4 border-t border-slate-800/60 text-xs text-slate-400 flex items-center gap-2">
-              <CheckCircle className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Full-time degree in progress (Expected Graduation: May 2027)</span>
+            <div className="py-5">
+              <h4 className="font-display font-bold text-base text-[#111215]">
+                {education.degree}
+              </h4>
+              <p className="text-xs text-charcoal-600 mt-1 leading-relaxed">
+                Comprehensive training across low-level operating system architectures, distributed systems, database indexing, and computer networks.
+              </p>
             </div>
-          </div>
 
-          {/* Right Column: Achievements & Certifications */}
+            <div className="pt-2 border-t border-[#f0f0eb]">
+              <div className="text-xs font-mono uppercase tracking-wider text-charcoal-400 font-semibold mb-3 flex items-center gap-1.5">
+                <BookOpen className="w-3.5 h-3.5 text-blue-600" />
+                <span>Relevant Academic Coursework</span>
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {education.coursework.map((course, idx) => (
+                  <span
+                    key={idx}
+                    className="px-2.5 py-1 rounded-md text-xs font-mono bg-[#fafaf8] text-charcoal-700 border border-[#e8e8e3]"
+                  >
+                    {course}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-[#f0f0eb] text-xs text-charcoal-500 flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+              <span>Degree in progress (Expected Graduation: May 2027)</span>
+            </div>
+          </motion.div>
+
+          {/* Right Column: LeetCode & Certifications */}
           <div className="lg:col-span-6 space-y-6">
             
-            {/* LeetCode & Problem Solving */}
-            <div className="rounded-2xl bg-slate-900/50 border border-slate-800 p-6">
-              <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+            {/* LeetCode Milestone */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="card-clean p-7 bg-white"
+            >
+              <div className="flex items-center justify-between pb-4 border-b border-[#e8e8e3]">
                 <div className="flex items-center gap-2.5">
-                  <Code className="w-4 h-4 text-amber-400" />
-                  <h4 className="font-bold text-white text-base">
+                  <LeetCodeIcon className="w-5 h-5 text-amber-600" />
+                  <h4 className="font-display font-bold text-[#111215] text-base">
                     Algorithmic Problem Solving
                   </h4>
                 </div>
-                <span className="text-xs font-mono text-amber-400 bg-amber-950/60 border border-amber-500/30 px-2 py-0.5 rounded">
+                <span className="text-xs font-mono text-amber-700 bg-amber-50 border border-amber-200 px-2.5 py-0.5 rounded-full font-medium">
                   LeetCode
                 </span>
               </div>
 
               <div className="pt-4 space-y-3">
                 {achievements.map((item, idx) => (
-                  <div key={idx} className="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800 flex items-start justify-between gap-3">
+                  <div key={idx} className="p-3.5 rounded-xl bg-[#fafaf8] border border-[#e8e8e3] flex items-start justify-between gap-3">
                     <div>
-                      <div className="font-bold text-sm text-slate-100 flex items-center gap-2">
-                        <span>{item.title}</span>
+                      <div className="font-bold text-xs sm:text-sm text-[#111215]">
+                        {item.title}
                       </div>
-                      <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                      <p className="text-xs text-charcoal-600 mt-1 leading-relaxed">
                         {item.detail}
                       </p>
                     </div>
@@ -114,41 +125,47 @@ export default function EducationCertifications() {
                         href={item.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white shrink-0"
+                        className="p-1.5 rounded-full bg-white border border-[#e8e8e3] text-charcoal-600 hover:text-[#111215] hover:scale-105 transition-all shrink-0"
                         title="View LeetCode Profile"
                       >
-                        <ExternalLink className="w-3.5 h-3.5" />
+                        <ArrowUpRight className="w-4 h-4" />
                       </a>
                     )}
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Certifications */}
-            <div className="rounded-2xl bg-slate-900/50 border border-slate-800 p-6">
-              <div className="flex items-center gap-2.5 pb-3 border-b border-slate-800">
-                <Award className="w-4 h-4 text-cyan-400" />
-                <h4 className="font-bold text-white text-base">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              className="card-clean p-7 bg-white"
+            >
+              <div className="flex items-center gap-2.5 pb-4 border-b border-[#e8e8e3]">
+                <Award className="w-5 h-5 text-blue-700" />
+                <h4 className="font-display font-bold text-[#111215] text-base">
                   Professional Certifications
                 </h4>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4">
                 {certifications.map((cert, cIdx) => (
-                  <div key={cIdx} className="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800 flex flex-col justify-between">
+                  <div key={cIdx} className="p-3.5 rounded-xl bg-[#fafaf8] border border-[#e8e8e3] flex flex-col justify-between">
                     <div>
-                      <div className="text-[10px] font-mono text-cyan-400">{cert.issuer}</div>
-                      <h5 className="font-bold text-xs text-slate-100 mt-1">{cert.title}</h5>
+                      <span className="text-[10px] font-mono text-blue-700 uppercase tracking-wider">{cert.issuer}</span>
+                      <h5 className="font-bold text-xs text-[#111215] mt-1">{cert.title}</h5>
                     </div>
-                    <span className="mt-2 text-[10px] font-mono text-emerald-400 flex items-center gap-1">
-                      <CheckCircle className="w-3 h-3" />
+                    <span className="mt-2 text-[10px] font-mono text-emerald-700 flex items-center gap-1 font-medium">
+                      <CheckCircle2 className="w-3 h-3" />
                       <span>{cert.status}</span>
                     </span>
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
           </div>
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { technicalSkillsCategories } from '../data/portfolioData';
 import {
   Code2,
@@ -11,8 +12,7 @@ import {
   FileSearch,
   Wrench,
   ShieldCheck,
-  CheckCircle2,
-  Filter
+  CheckCircle2
 } from 'lucide-react';
 
 const iconMap = {
@@ -39,40 +39,39 @@ export default function Skills() {
       : technicalSkillsCategories.filter((c) => c.category === selectedCategory);
 
   return (
-    <section id="skills" className="py-20 border-b border-slate-800/60 relative">
+    <section id="skills" className="py-20 md:py-28 border-b border-[#e8e8e3] bg-[#fafaf8]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10">
+        {/* Section Index & Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-950/60 border border-indigo-500/30 text-indigo-400 text-xs font-mono mb-3">
-              <Code2 className="w-3.5 h-3.5" />
-              <span>Technical Capabilities</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              Skills & Engineering Competencies
+            <span className="text-xs font-mono font-semibold uppercase tracking-widest text-charcoal-400 mb-2 block">
+              [ 03 / CAPABILITIES & SKILLS ]
+            </span>
+            <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-[#111215]">
+              Technical Capabilities
             </h2>
-            <p className="mt-2 text-slate-400 text-sm max-w-2xl">
-              100% verified against codebases, production microservices at ShriNeo Vittiyam, and active repositories. Categorized with clean typography without artificial skill percentages.
+            <p className="mt-2 text-charcoal-600 text-sm sm:text-base max-w-xl">
+              Curated engineering competencies verified across production microservices, full-stack apps, and agentic workflows.
             </p>
           </div>
 
-          <div className="mt-4 md:mt-0 text-xs font-mono text-slate-400 flex items-center gap-2">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-            <span>10 Curated Engineering Domains</span>
+          <div className="mt-4 md:mt-0 text-xs font-mono text-emerald-700 flex items-center gap-1.5 font-medium">
+            <CheckCircle2 className="w-4 h-4" />
+            <span>Zero Fake Percentages • 100% Code Grounded</span>
           </div>
         </div>
 
-        {/* Category Filter Pills */}
+        {/* Filter Pills */}
         <div className="flex flex-wrap gap-2 mb-10">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              className={`px-4 py-2 rounded-full text-xs font-medium transition-all ${
                 selectedCategory === cat
-                  ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30 font-semibold'
-                  : 'bg-slate-900/80 hover:bg-slate-800 text-slate-400 hover:text-slate-200 border border-slate-800'
+                  ? 'bg-[#111215] text-white shadow-sm font-semibold'
+                  : 'bg-white hover:bg-[#f4f4f0] text-charcoal-700 border border-[#e8e8e3]'
               }`}
             >
               {cat}
@@ -80,32 +79,34 @@ export default function Skills() {
           ))}
         </div>
 
-        {/* Skills Cards Grid */}
+        {/* Skills Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredCategories.map((cat, idx) => {
             const IconComponent = iconMap[cat.icon] || Code2;
             return (
-              <div
+              <motion.div
                 key={idx}
-                className="rounded-2xl bg-slate-900/50 border border-slate-800/90 hover:border-slate-700/80 p-6 flex flex-col justify-between transition-all group hover:shadow-xl hover:shadow-blue-900/5"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.05 }}
+                className="card-clean p-6 flex flex-col justify-between"
               >
                 <div>
-                  {/* Category Header */}
-                  <div className="flex items-center gap-3 mb-4 pb-3 border-b border-slate-800/80">
-                    <div className="w-9 h-9 rounded-xl bg-blue-950/70 border border-blue-800/40 flex items-center justify-center text-blue-400 group-hover:text-blue-300 group-hover:scale-105 transition-all">
+                  <div className="flex items-center gap-3 pb-4 mb-4 border-b border-[#e8e8e3]">
+                    <div className="w-8 h-8 rounded-full bg-[#f4f4f0] text-charcoal-800 flex items-center justify-center">
                       <IconComponent className="w-4 h-4" />
                     </div>
-                    <h3 className="font-bold text-slate-100 text-sm sm:text-base">
+                    <h3 className="font-display font-bold text-[#111215] text-sm sm:text-base">
                       {cat.category}
                     </h3>
                   </div>
 
-                  {/* Skills Tag List */}
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5">
                     {cat.skills.map((skill, sIdx) => (
                       <span
                         key={sIdx}
-                        className="px-2.5 py-1 rounded-lg text-xs font-mono bg-slate-950/70 text-slate-300 border border-slate-800 hover:border-slate-700 hover:text-white transition-colors"
+                        className="px-2.5 py-1 rounded-md text-xs font-mono bg-[#fafaf8] text-charcoal-700 border border-[#e8e8e3] hover:border-charcoal-400 transition-colors"
                       >
                         {skill}
                       </span>
@@ -113,11 +114,11 @@ export default function Skills() {
                   </div>
                 </div>
 
-                <div className="mt-5 pt-3 border-t border-slate-800/50 flex items-center justify-between text-[11px] text-slate-500 font-mono">
-                  <span>{cat.skills.length} verified competencies</span>
-                  <span className="text-emerald-500/80">✓ verified</span>
+                <div className="mt-5 pt-3 border-t border-[#f0f0eb] flex items-center justify-between text-[11px] font-mono text-charcoal-400">
+                  <span>{cat.skills.length} competencies</span>
+                  <span className="text-emerald-600 font-medium">✓ verified</span>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>

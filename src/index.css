@@ -5,38 +5,34 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    color-scheme: dark;
+    color-scheme: light;
   }
   body {
-    @apply bg-[#080c14] text-slate-100 font-sans selection:bg-blue-500/30 selection:text-blue-200 antialiased overflow-x-hidden;
+    @apply bg-[#fafaf8] text-[#141517] font-sans selection:bg-[#141517] selection:text-white antialiased overflow-x-hidden;
   }
 }
 
-/* Custom scrollbar */
+/* Custom subtle scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #080c14;
+  background: #f4f4f0;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
-  border-radius: 4px;
+  background: #d4d4cd;
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #a8a89f;
 }
 
-/* Subtle glow effects */
-.glow-blue {
-  box-shadow: 0 0 40px -10px rgba(59, 130, 246, 0.25);
+/* Modern editorial card shadow */
+.card-clean {
+  @apply bg-white border border-[#e8e8e3] rounded-2xl shadow-[0_2px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300;
 }
-.glow-cyan {
-  box-shadow: 0 0 40px -10px rgba(6, 182, 212, 0.25);
-}
-.glow-indigo {
-  box-shadow: 0 0 40px -10px rgba(99, 102, 241, 0.25);
-}
-.glow-emerald {
-  box-shadow: 0 0 40px -10px rgba(16, 185, 129, 0.25);
+
+/* Subtle marquee fade mask */
+.mask-marquee {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
