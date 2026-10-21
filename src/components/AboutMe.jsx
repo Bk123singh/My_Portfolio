@@ -27,7 +27,7 @@ export default function AboutMe() {
   const personalSnapshots = [
     { label: "Location", val: "Siwan, Bihar, India 🇮🇳" },
     { label: "Education", val: "B.Tech CSE @ VGU (2023–2027)" },
-    { label: "Current Role", val: "Backend SDE Intern @ ShriNeo Vittiyam" },
+    { label: "Current Role", val: "Core Backend Engineer @ ShriNeo Vittiyam" },
     { label: "Algorithmic Habit", val: "150+ LeetCode DSA in Python" },
     { label: "Favorite Work Mode", val: "Deep work, music & clean logs" },
     { label: "Core Values", val: "Ownership, humility, continuous learning" },

@@ -5,7 +5,7 @@ export const personalInfo = {
   phone: "+91 7735687076",
   location: "Siwan, Bihar, India",
   summary:
-    "Software Development Engineer intern who cares about the craft: clean, tested code shipped to production. Built 4 production microservices (Node.js, Express.js, PostgreSQL, Redis, Kafka, Docker) in a live commercial product, backed by 150+ DSA problems solved in Python. Experienced in REST API design, code reviews, debugging, and Agile collaboration with frontend, Android, and backend teams. Passionate about building developer-focused tools and AI-powered products.",
+    "Core Backend Software Engineer who cares about the craft: clean, resilient, and tested code shipped to production. As a core engineering team member at ShriNeo Vittiyam, architected 4 production microservices (Node.js, Express.js, PostgreSQL, Redis, Kafka, Docker) for a live commercial fintech platform, backed by 150+ DSA problems solved in Python. Experienced in end-to-end REST API architecture, database caching, event-driven streaming, and leading cross-functional engineering across frontend, Android, and backend teams. Passionate about building high-availability distributed systems and Generative/Agentic AI products.",
   github: "https://github.com/Bk123singh",
   linkedin: "https://www.linkedin.com/in/bishal-kumar-b8a7b4272",
   leetcode: "https://leetcode.com/u/heykumar/",
@@ -34,22 +34,22 @@ export const professionalInterests = [
 
 export const experience = [
   {
-    role: "Backend Software Engineer Intern",
+    role: "Core Backend Software Engineer",
     company: "ShriNeo Vittiyam Pvt. Ltd.",
-    type: "Internship",
+    type: "Core Team Member",
     duration: "Mar 2026 – Present",
     location: "Fintech Platform",
     context:
-      "Core backend engineering for a commercial digital lending and financial services platform, architecting isolated microservices to support loan-origination workflows and real-time fraud monitoring.",
+      "Core backend engineer for a commercial digital lending and financial services platform, leading the architectural design and deployment of isolated microservices to power loan-origination workflows, token security, and real-time fraud monitoring.",
     responsibilities: [
-      "Designed and shipped 4 production-grade microservices (Authentication, Loan Application, Fraud Detection, Notification) with Node.js, Express.js, PostgreSQL, and Redis, following Clean Architecture.",
-      "Built the Authentication Service with JWT, RBAC, and OTP verification; measured and analyzed API performance with Postman, sustaining a 120ms average API response time.",
-      "Cut repeated database lookups by ~40% by implementing Redis caching layers for token and session validation.",
-      "Built the Loan Application Service (PostgreSQL, Prisma ORM, Redis); tested and debugged against 100+ test loan applications.",
-      "Developed Kafka-based event pipelines for fraud detection and notifications, processing 500+ events with zero failures.",
-      "Hardened REST APIs with request validation, rate limiting, token blacklisting, and structured error handling.",
-      "Cut local setup time from 30 min to under 10 min with Docker Compose on Linux; wrote comprehensive technical documentation for APIs and setup.",
-      "Took ownership of services end to end and raised issues early, collaborating with frontend, Android, and backend engineers through API design discussions, code reviews, and Agile sprint planning."
+      "Core engineering contributor designing and shipping 4 production-grade microservices (Authentication, Loan Application, Fraud Detection, Notification) using Node.js, Express.js, PostgreSQL, and Redis with Clean Architecture.",
+      "Architected and delivered the Authentication Service with JWT, RBAC, and OTP verification; benchmarked and sustained a 120ms average API response time under high concurrency in Postman.",
+      "Eliminated ~40% of repetitive database queries by designing high-throughput Redis caching layers for token and session validation.",
+      "Built and scaled the core Loan Application Service (PostgreSQL, Prisma ORM, Redis); stress-tested and validated end-to-end workflows across 100+ production test cases.",
+      "Engineered Kafka-based event streaming pipelines for real-time fraud detection and automated alert dispatching, processing 500+ critical events with zero message loss.",
+      "Hardened enterprise REST APIs with rigorous request validation, distributed rate limiting, token blacklisting, and unified error handling.",
+      "Spearheaded developer productivity by introducing containerized Docker Compose environments on Linux, slashing developer onboarding from 30 min to under 10 min.",
+      "Demonstrated end-to-end technical leadership as a core team member—guiding API contracts, leading code reviews, and driving Agile sprint execution with web and Android teams."
     ],
     technologies: [
       "Node.js",

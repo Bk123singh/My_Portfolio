@@ -59,7 +59,7 @@ export default function Hero() {
             className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white border border-[#e8e8e3] shadow-[0_2px_8px_rgba(0,0,0,0.03)] text-xs text-charcoal-700 font-medium"
           >
             <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" aria-hidden="true" />
-            <span>Backend SDE Intern @ ShriNeo Vittiyam</span>
+            <span>Core Backend Engineer @ ShriNeo Vittiyam</span>
             <span className="text-charcoal-400" aria-hidden="true">•</span>
             <span className="text-charcoal-600 font-mono">B.Tech CSE '27</span>
           </motion.div>
@@ -220,7 +220,7 @@ export default function Hero() {
                 className="absolute -top-4 -left-4 z-10 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-[#e8e8e3] shadow-md text-[11px] font-mono text-charcoal-800 flex items-center gap-1.5"
               >
                 <span className="w-2 h-2 rounded-full bg-blue-600" aria-hidden="true" />
-                <span>Shipping @ ShriNeo Vittiyam</span>
+                <span>Core Team @ ShriNeo Vittiyam</span>
               </motion.div>
 
               {/* Floating Bottom Badge */}

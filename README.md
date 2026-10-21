@@ -24,7 +24,7 @@ Built with **React 18**, **Vite**, and **Tailwind CSS**.
    - 30-second quantifiable benchmarks: 4 microservices shipped, 40% DB lookups avoided, 500+ Kafka events, 120ms average API latency, 150+ LeetCode DSA, <10 min Docker setup.
    - 1-click verified resume download (`Bishal_Kumar_Resume.pdf`).
 2. **Work Experience**:
-   - Editorial timeline detailing ShriNeo Vittiyam internship deliverables, system architecture, performance benchmarks, and tech stack chips.
+   - Editorial timeline detailing ShriNeo Vittiyam core engineering deliverables, microservices architecture, performance benchmarks, and tech stack chips.
 3. **AI Engineering & RAG Deep Dive**:
    - Interactive showcase for **JobPilot AI** (Deterministic 5-pillar matching & Recruiter Kanban), **Multi-Agent Research Studio** (Tool calling & critique loop), **Document RAG Assistant** (FAISS vector store & Mistral embeddings), and **AI Blog Platform**.
 4. **Skills Matrix**:
