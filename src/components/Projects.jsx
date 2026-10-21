@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { aiShowcaseProjects } from '../data/portfolioData';
-import { ArrowUpRight, CheckCircle2, Layers, Cpu, Database, Bot, ExternalLink } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2, Layers, Cpu, Database, Bot } from 'lucide-react';
 import { GithubIcon } from './Icons';
 
 export default function Projects() {
@@ -16,39 +16,43 @@ export default function Projects() {
         {/* Section Index & Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <div>
-            <span className="text-xs font-mono font-semibold uppercase tracking-widest text-charcoal-400 mb-2 block">
-              [ 02 / SELECTED WORK & AI SYSTEMS ]
+            <span className="text-xs font-mono font-semibold uppercase tracking-widest text-charcoal-600 mb-2 block">
+              [ 03 / SELECTED WORK & AI SYSTEMS ]
             </span>
             <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-[#111215]">
               Featured Projects & AI Systems
             </h2>
-            <p className="mt-2 text-charcoal-600 text-sm sm:text-base max-w-xl">
+            <p className="mt-2 text-charcoal-700 text-sm sm:text-base max-w-xl">
               Autonomous multi-agent workflows, deterministic ATS scoring algorithms, and verified Retrieval-Augmented Generation (RAG) pipelines.
             </p>
           </div>
         </div>
 
-        {/* Project Selector - Alejandro HA style numbered navigation */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
+        {/* Project Selector - Numbered navigation with proper tab semantics */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10" role="tablist" aria-label="Project Selection">
           {aiShowcaseProjects.map((project, idx) => {
             const isActive = activeTab === project.id;
             return (
               <button
                 key={project.id}
+                role="tab"
+                aria-selected={isActive}
+                aria-controls={`panel-${project.id}`}
+                id={`tab-${project.id}`}
                 onClick={() => setActiveTab(project.id)}
-                className={`p-4 rounded-2xl text-left border transition-all duration-200 ${
+                className={`p-4 rounded-2xl text-left border transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#111215] ${
                   isActive
                     ? 'bg-[#111215] text-white border-[#111215] shadow-md scale-[1.01]'
                     : 'bg-[#fafaf8] text-charcoal-700 border-[#e8e8e3] hover:bg-[#f4f4f0]'
                 }`}
               >
-                <div className={`font-mono text-xs font-bold ${isActive ? 'text-blue-400' : 'text-charcoal-400'}`}>
+                <div className={`font-mono text-xs font-bold ${isActive ? 'text-blue-300' : 'text-charcoal-600'}`}>
                   0{idx + 1}
                 </div>
                 <div className="font-display font-bold text-sm sm:text-base mt-1 truncate">
                   {project.title.split(':')[0]}
                 </div>
-                <div className={`text-[11px] truncate mt-0.5 ${isActive ? 'text-neutral-300' : 'text-charcoal-500'}`}>
+                <div className={`text-[11px] truncate mt-0.5 ${isActive ? 'text-neutral-300' : 'text-charcoal-600'}`}>
                   {project.badge}
                 </div>
               </button>
@@ -60,6 +64,9 @@ export default function Projects() {
         <AnimatePresence mode="wait">
           <motion.div
             key={selectedProject.id}
+            role="tabpanel"
+            id={`panel-${selectedProject.id}`}
+            aria-labelledby={`tab-${selectedProject.id}`}
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
@@ -70,11 +77,11 @@ export default function Projects() {
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-[#e8e8e3]">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="px-3 py-1 rounded-full text-xs font-mono font-medium bg-white text-blue-700 border border-[#e2e2dc]">
+                  <span className="px-3 py-1 rounded-full text-xs font-mono font-medium bg-white text-blue-800 border border-[#e2e2dc]">
                     {selectedProject.badge}
                   </span>
-                  <span className="text-xs font-mono text-emerald-700 flex items-center gap-1 font-medium">
-                    <CheckCircle2 className="w-3.5 h-3.5" />
+                  <span className="text-xs font-mono text-emerald-800 flex items-center gap-1 font-medium">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" aria-hidden="true" />
                     <span>Verified Implementation</span>
                   </span>
                 </div>
@@ -93,10 +100,11 @@ export default function Projects() {
                     href={selectedProject.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-full bg-[#111215] hover:bg-[#27272a] text-white shadow-sm transition-all"
+                    aria-label={`Open live demo for ${selectedProject.title}`}
+                    className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-full bg-[#111215] hover:bg-[#27272a] text-white shadow-sm transition-all focus-visible:ring-2 focus-visible:ring-[#111215]"
                   >
                     <span>Live Demo</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
+                    <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
                   </a>
                 )}
                 {selectedProject.githubUrl && (
@@ -104,9 +112,10 @@ export default function Projects() {
                     href={selectedProject.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-full bg-white hover:bg-[#f4f4f0] text-charcoal-800 border border-[#e8e8e3] transition-colors"
+                    aria-label={`View source code for ${selectedProject.title} on GitHub`}
+                    className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-full bg-white hover:bg-[#f4f4f0] text-charcoal-800 border border-[#e8e8e3] transition-colors focus-visible:ring-2 focus-visible:ring-[#111215]"
                   >
-                    <GithubIcon className="w-3.5 h-3.5" />
+                    <GithubIcon className="w-3.5 h-3.5" aria-hidden="true" />
                     <span>GitHub Code</span>
                   </a>
                 )}
@@ -116,7 +125,7 @@ export default function Projects() {
             {/* Problem & Architectural Solution Cards */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 py-6 border-b border-[#e8e8e3]">
               <div className="p-5 rounded-2xl bg-white border border-[#e8e8e3]">
-                <div className="text-xs font-mono uppercase tracking-wider text-rose-700 font-semibold mb-2">
+                <div className="text-xs font-mono uppercase tracking-wider text-rose-800 font-semibold mb-2">
                   The Engineering Problem
                 </div>
                 <p className="text-xs sm:text-sm text-charcoal-700 leading-relaxed font-normal">
@@ -125,7 +134,7 @@ export default function Projects() {
               </div>
 
               <div className="p-5 rounded-2xl bg-white border border-[#e8e8e3]">
-                <div className="text-xs font-mono uppercase tracking-wider text-blue-700 font-semibold mb-2">
+                <div className="text-xs font-mono uppercase tracking-wider text-blue-800 font-semibold mb-2">
                   System Architecture & Solution
                 </div>
                 <p className="text-xs sm:text-sm text-charcoal-700 leading-relaxed font-normal">
@@ -139,8 +148,8 @@ export default function Projects() {
             {/* 1. JobPilot AI 5-Pillars */}
             {selectedProject.id === 'jobpilot-ai' && selectedProject.fivePillars && (
               <div className="py-6 border-b border-[#e8e8e3]">
-                <div className="text-xs font-mono uppercase tracking-wider text-charcoal-500 font-semibold mb-4 flex items-center gap-2">
-                  <Layers className="w-3.5 h-3.5 text-blue-600" />
+                <div className="text-xs font-mono uppercase tracking-wider text-charcoal-600 font-semibold mb-4 flex items-center gap-2">
+                  <Layers className="w-3.5 h-3.5 text-blue-700" aria-hidden="true" />
                   <span>Deterministic 5-Pillar Matching Weighting</span>
                 </div>
 
@@ -148,10 +157,10 @@ export default function Projects() {
                   {selectedProject.fivePillars.map((pillar, pIdx) => (
                     <div key={pIdx} className="p-4 rounded-xl bg-white border border-[#e8e8e3] flex flex-col justify-between">
                       <div>
-                        <span className="font-display font-bold text-xl text-blue-700">{pillar.weight}</span>
+                        <span className="font-display font-bold text-xl text-blue-800">{pillar.weight}</span>
                         <h4 className="text-xs font-bold text-[#111215] mt-1">{pillar.name}</h4>
                       </div>
-                      <p className="text-[11px] text-charcoal-500 mt-2 leading-tight">{pillar.detail}</p>
+                      <p className="text-[11px] text-charcoal-600 mt-2 leading-tight">{pillar.detail}</p>
                     </div>
                   ))}
                 </div>
@@ -161,15 +170,15 @@ export default function Projects() {
             {/* 2. Agentic Workflow Pipeline */}
             {selectedProject.agenticWorkflow && (
               <div className="py-6 border-b border-[#e8e8e3]">
-                <div className="text-xs font-mono uppercase tracking-wider text-charcoal-500 font-semibold mb-4 flex items-center gap-2">
-                  <Bot className="w-3.5 h-3.5 text-indigo-600" />
+                <div className="text-xs font-mono uppercase tracking-wider text-charcoal-600 font-semibold mb-4 flex items-center gap-2">
+                  <Bot className="w-3.5 h-3.5 text-indigo-700" aria-hidden="true" />
                   <span>Autonomous Multi-Agent Workflow Execution</span>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                   {selectedProject.agenticWorkflow.map((step, sIdx) => (
                     <div key={sIdx} className="p-4 rounded-xl bg-white border border-[#e8e8e3]">
-                      <div className="text-[10px] font-mono font-bold text-indigo-600 uppercase tracking-widest">
+                      <div className="text-[10px] font-mono font-bold text-indigo-800 uppercase tracking-widest">
                         Stage 0{sIdx + 1}
                       </div>
                       <h4 className="text-xs font-bold text-[#111215] mt-1">{step.step}</h4>
@@ -183,8 +192,8 @@ export default function Projects() {
             {/* 3. Document RAG Pipeline */}
             {selectedProject.id === 'document-rag-assistant' && selectedProject.ragPipelineSteps && (
               <div className="py-6 border-b border-[#e8e8e3]">
-                <div className="text-xs font-mono uppercase tracking-wider text-charcoal-500 font-semibold mb-4 flex items-center gap-2">
-                  <Database className="w-3.5 h-3.5 text-blue-600" />
+                <div className="text-xs font-mono uppercase tracking-wider text-charcoal-600 font-semibold mb-4 flex items-center gap-2">
+                  <Database className="w-3.5 h-3.5 text-blue-700" aria-hidden="true" />
                   <span>Verified 6-Stage RAG Pipeline (Code Grounded)</span>
                 </div>
 
@@ -192,7 +201,7 @@ export default function Projects() {
                   {selectedProject.ragPipelineSteps.map((step, rIdx) => (
                     <div key={rIdx} className="p-4 rounded-xl bg-white border border-[#e8e8e3]">
                       <div className="flex items-center justify-between">
-                        <span className="text-xs font-bold text-blue-700 font-mono">{step.stage}</span>
+                        <span className="text-xs font-bold text-blue-800 font-mono">{step.stage}</span>
                         <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#f4f4f0] text-charcoal-700 font-mono">
                           {step.tech}
                         </span>
@@ -207,13 +216,13 @@ export default function Projects() {
             {/* Outcomes & Technology Stack */}
             <div className="pt-6 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
               <div className="lg:col-span-7">
-                <div className="text-xs font-mono uppercase tracking-wider text-charcoal-400 font-semibold mb-3">
+                <div className="text-xs font-mono uppercase tracking-wider text-charcoal-600 font-semibold mb-3">
                   Verifiable Engineering Outcomes
                 </div>
                 <ul className="space-y-2">
                   {selectedProject.outcomes.map((outcome, oIdx) => (
                     <li key={oIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-charcoal-700">
-                      <span className="text-emerald-600 mt-0.5 font-bold">•</span>
+                      <span className="text-emerald-800 mt-0.5 font-bold" aria-hidden="true">•</span>
                       <span>{outcome}</span>
                     </li>
                   ))}
@@ -221,14 +230,14 @@ export default function Projects() {
               </div>
 
               <div className="lg:col-span-5">
-                <div className="text-xs font-mono uppercase tracking-wider text-charcoal-400 font-semibold mb-3">
+                <div className="text-xs font-mono uppercase tracking-wider text-charcoal-600 font-semibold mb-3">
                   Technologies Used
                 </div>
                 <div className="flex flex-wrap gap-1.5">
                   {selectedProject.technologies.map((tech, tIdx) => (
                     <span
                       key={tIdx}
-                      className="px-2.5 py-1 rounded-full text-xs font-mono bg-white text-charcoal-700 border border-[#e2e2dc]"
+                      className="px-2.5 py-1 rounded-full text-xs font-mono bg-white text-charcoal-800 border border-[#e2e2dc]"
                     >
                       {tech}
                     </span>

@@ -45,30 +45,30 @@ export default function Skills() {
         {/* Section Index & Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <div>
-            <span className="text-xs font-mono font-semibold uppercase tracking-widest text-charcoal-400 mb-2 block">
-              [ 03 / CAPABILITIES & SKILLS ]
+            <span className="text-xs font-mono font-semibold uppercase tracking-widest text-charcoal-600 mb-2 block">
+              [ 04 / CAPABILITIES & SKILLS ]
             </span>
             <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-[#111215]">
               Technical Capabilities
             </h2>
-            <p className="mt-2 text-charcoal-600 text-sm sm:text-base max-w-xl">
+            <p className="mt-2 text-charcoal-700 text-sm sm:text-base max-w-xl">
               Curated engineering competencies verified across production microservices, full-stack apps, and agentic workflows.
             </p>
           </div>
 
-          <div className="mt-4 md:mt-0 text-xs font-mono text-emerald-700 flex items-center gap-1.5 font-medium">
-            <CheckCircle2 className="w-4 h-4" />
+          <div className="mt-4 md:mt-0 text-xs font-mono text-emerald-800 flex items-center gap-1.5 font-medium">
+            <CheckCircle2 className="w-4 h-4 text-emerald-700" aria-hidden="true" />
             <span>Zero Fake Percentages • 100% Code Grounded</span>
           </div>
         </div>
 
         {/* Filter Pills */}
-        <div className="flex flex-wrap gap-2 mb-10">
+        <div className="flex flex-wrap gap-2 mb-10" role="group" aria-label="Skill Category Filters">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-2 rounded-full text-xs font-medium transition-all ${
+              className={`px-4 py-2 rounded-full text-xs font-medium transition-all focus-visible:ring-2 focus-visible:ring-[#111215] ${
                 selectedCategory === cat
                   ? 'bg-[#111215] text-white shadow-sm font-semibold'
                   : 'bg-white hover:bg-[#f4f4f0] text-charcoal-700 border border-[#e8e8e3]'
@@ -95,7 +95,7 @@ export default function Skills() {
                 <div>
                   <div className="flex items-center gap-3 pb-4 mb-4 border-b border-[#e8e8e3]">
                     <div className="w-8 h-8 rounded-full bg-[#f4f4f0] text-charcoal-800 flex items-center justify-center">
-                      <IconComponent className="w-4 h-4" />
+                      <IconComponent className="w-4 h-4" aria-hidden="true" />
                     </div>
                     <h3 className="font-display font-bold text-[#111215] text-sm sm:text-base">
                       {cat.category}
@@ -106,7 +106,7 @@ export default function Skills() {
                     {cat.skills.map((skill, sIdx) => (
                       <span
                         key={sIdx}
-                        className="px-2.5 py-1 rounded-md text-xs font-mono bg-[#fafaf8] text-charcoal-700 border border-[#e8e8e3] hover:border-charcoal-400 transition-colors"
+                        className="px-2.5 py-1 rounded-md text-xs font-mono bg-[#fafaf8] text-charcoal-800 border border-[#e8e8e3] hover:border-charcoal-500 transition-colors"
                       >
                         {skill}
                       </span>
@@ -114,9 +114,9 @@ export default function Skills() {
                   </div>
                 </div>
 
-                <div className="mt-5 pt-3 border-t border-[#f0f0eb] flex items-center justify-between text-[11px] font-mono text-charcoal-400">
+                <div className="mt-5 pt-3 border-t border-[#f0f0eb] flex items-center justify-between text-[11px] font-mono text-charcoal-600 font-semibold">
                   <span>{cat.skills.length} competencies</span>
-                  <span className="text-emerald-600 font-medium">✓ verified</span>
+                  <span className="text-emerald-800 font-medium">✓ verified</span>
                 </div>
               </motion.div>
             );

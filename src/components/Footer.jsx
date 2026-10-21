@@ -9,7 +9,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="py-14 bg-[#f4f4f0] text-charcoal-600 text-xs font-mono border-t border-[#e8e8e3]">
+    <footer className="py-14 bg-[#f4f4f0] text-charcoal-700 text-xs font-mono border-t border-[#e8e8e3]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pb-8 border-b border-[#e2e2dc]">
           
@@ -18,7 +18,7 @@ export default function Footer() {
             <span className="font-display text-base font-bold text-[#111215]">
               {personalInfo.name}
             </span>
-            <span className="text-[11px] text-charcoal-500 mt-0.5">
+            <span className="text-[11px] text-charcoal-700 mt-0.5">
               Full-Stack Developer • Backend Engineering • Generative & Agentic AI
             </span>
           </div>
@@ -29,55 +29,57 @@ export default function Footer() {
               href={personalInfo.github}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="GitHub"
-              className="p-2 rounded-full bg-white border border-[#e8e8e3] text-charcoal-700 hover:text-[#111215] hover:bg-[#fafaf8] transition-colors"
+              aria-label="GitHub Profile"
+              className="p-2 rounded-full bg-white border border-[#e8e8e3] text-charcoal-800 hover:text-[#111215] hover:bg-[#fafaf8] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#111215]"
             >
-              <GithubIcon className="w-4 h-4" />
+              <GithubIcon className="w-4 h-4" aria-hidden="true" />
             </a>
             <a
               href={personalInfo.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="p-2 rounded-full bg-white border border-[#e8e8e3] text-charcoal-700 hover:text-blue-600 hover:bg-[#fafaf8] transition-colors"
+              aria-label="LinkedIn Profile"
+              className="p-2 rounded-full bg-white border border-[#e8e8e3] text-charcoal-800 hover:text-cobalt hover:bg-[#fafaf8] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#111215]"
             >
-              <LinkedinIcon className="w-4 h-4" />
+              <LinkedinIcon className="w-4 h-4" aria-hidden="true" />
             </a>
             <a
               href={personalInfo.leetcode}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="LeetCode"
-              className="p-2 rounded-full bg-white border border-[#e8e8e3] text-charcoal-700 hover:text-amber-600 hover:bg-[#fafaf8] transition-colors"
+              aria-label="LeetCode Profile"
+              className="p-2 rounded-full bg-white border border-[#e8e8e3] text-charcoal-800 hover:text-amber-800 hover:bg-[#fafaf8] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#111215]"
             >
-              <LeetCodeIcon className="w-4 h-4" />
+              <LeetCodeIcon className="w-4 h-4" aria-hidden="true" />
             </a>
             <a
               href={`mailto:${personalInfo.email}`}
-              aria-label="Email"
-              className="p-2 rounded-full bg-white border border-[#e8e8e3] text-charcoal-700 hover:text-[#111215] hover:bg-[#fafaf8] transition-colors"
+              aria-label="Send direct email"
+              className="p-2 rounded-full bg-white border border-[#e8e8e3] text-charcoal-800 hover:text-[#111215] hover:bg-[#fafaf8] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#111215]"
             >
-              <Mail className="w-4 h-4" />
+              <Mail className="w-4 h-4" aria-hidden="true" />
             </a>
           </div>
 
           {/* Back to Top */}
           <button
+            type="button"
             onClick={scrollToTop}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-[#e8e8e3] text-charcoal-700 hover:text-[#111215] hover:bg-[#fafaf8] transition-all text-xs"
+            aria-label="Scroll back to top of page"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-[#e8e8e3] text-charcoal-800 hover:text-[#111215] hover:bg-[#fafaf8] transition-all text-xs font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#111215]"
           >
             <span>Back to top</span>
-            <ArrowUp className="w-3.5 h-3.5" />
+            <ArrowUp className="w-3.5 h-3.5" aria-hidden="true" />
           </button>
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-charcoal-400 gap-2">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-charcoal-600 gap-2">
           <div>
             © {new Date().getFullYear()} Bishal Kumar. Built with React 18, Vite & Tailwind CSS.
           </div>
-          <div className="flex items-center gap-2 text-emerald-700 font-medium">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+          <div className="flex items-center gap-2 text-emerald-800 font-semibold">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" aria-hidden="true" />
             <span>Verified Commercial & AI Systems</span>
           </div>
         </div>

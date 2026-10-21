@@ -8,7 +8,15 @@
     color-scheme: light;
   }
   body {
-    @apply bg-[#fafaf8] text-[#141517] font-sans selection:bg-[#141517] selection:text-white antialiased overflow-x-hidden;
+    @apply bg-[#fafaf8] text-[#141517] font-sans selection:bg-[#111215] selection:text-white antialiased overflow-x-hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Universal accessible focus ring */
+  :focus-visible {
+    @apply outline-none ring-2 ring-[#111215] ring-offset-2 ring-offset-[#fafaf8];
   }
 }
 
@@ -32,7 +40,47 @@
   @apply bg-white border border-[#e8e8e3] rounded-2xl shadow-[0_2px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300;
 }
 
+/* Waving hand animation - GPU accelerated */
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  30% { transform: rotate(14deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
+  60% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.animate-wave {
+  display: inline-block;
+  transform-origin: 70% 70%;
+  animation: wave 2s infinite ease-in-out;
+  will-change: transform;
+}
+
+/* Hardware-accelerated marquee */
+.animate-marquee {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
 /* Subtle marquee fade mask */
 .mask-marquee {
   mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+/* Accessibility: Respect Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-marquee,
+  .animate-wave {
+    animation: none !important;
+  }
 }

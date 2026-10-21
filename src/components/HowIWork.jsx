@@ -18,13 +18,13 @@ export default function HowIWork() {
         
         {/* Section Index & Header */}
         <div className="mb-14">
-          <span className="text-xs font-mono font-semibold uppercase tracking-widest text-charcoal-400 mb-2 block">
-            [ 04 / OPERATING PRINCIPLES ]
+          <span className="text-xs font-mono font-semibold uppercase tracking-widest text-charcoal-600 mb-2 block">
+            [ 05 / OPERATING PRINCIPLES ]
           </span>
           <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-[#111215]">
             Beyond the Code
           </h2>
-          <p className="mt-2 text-charcoal-600 text-sm sm:text-base max-w-xl">
+          <p className="mt-2 text-charcoal-700 text-sm sm:text-base max-w-xl">
             Software engineering is an ongoing balance of technical rigor, trade-off evaluation, and team ownership.
           </p>
         </div>
@@ -45,7 +45,7 @@ export default function HowIWork() {
                 <div>
                   <div className="flex items-center gap-3 pb-4 mb-4 border-b border-[#e8e8e3]">
                     <div className="w-8 h-8 rounded-full bg-white border border-[#e8e8e3] text-charcoal-800 flex items-center justify-center">
-                      <IconComponent className="w-4 h-4 text-blue-700" />
+                      <IconComponent className="w-4 h-4 text-blue-800" aria-hidden="true" />
                     </div>
                     <h3 className="font-display font-bold text-[#111215] text-base">
                       {skill.title}
@@ -55,7 +55,7 @@ export default function HowIWork() {
                   <ul className="space-y-3">
                     {skill.principles.map((principle, pIdx) => (
                       <li key={pIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-charcoal-700 leading-relaxed font-normal">
-                        <Check className="w-3.5 h-3.5 text-blue-600 shrink-0 mt-1" />
+                        <Check className="w-3.5 h-3.5 text-blue-800 shrink-0 mt-1" aria-hidden="true" />
                         <span>{principle}</span>
                       </li>
                     ))}
